@@ -1,0 +1,15 @@
+{%extends 'base.html'%}   
+{%block list_post%} 
+    <!-- цикл for для вакансий -->
+    <h1>Список вакансий</h1>
+     {%for j in jobs%}
+    <div class="job-card">
+        {%autoescape off %}
+        <div class="job-title">{{j.title}}</div>
+        <div class="job-description">{{j.description|linebreaks|truncatewords:40}}</div>
+        <a href="{{j.get_absolute_url}}" class="job-link">Подробнее</a>
+        {%endautoescape%}
+    </div>
+    {%endfor%}
+
+{%endblock%}

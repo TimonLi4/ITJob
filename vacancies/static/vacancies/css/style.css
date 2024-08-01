@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    background-color: #333;
+    color: white;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header h1 {
+    font-size: 1.5em;
+    margin: 0;
+}
+.header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.header nav ul li {
+    margin-left: 20px;
+}
+.header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+.header nav ul li a:hover {
+    text-decoration: underline;
+}
+.sidebar {
+    background-color: #333;
+    color: white;
+    width: 250px;
+    padding: 20px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 60px; /* Adjusted to be below the header */
+    left: 0;
+    height: calc(100vh); /* Adjusted to fit below the header */
+}
+.sidebar h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+.main-content {
+    margin-left: 270px;
+    margin-top: 50px; /* Adjusted to be below the header */
+    padding: 20px;
+    box-sizing: border-box;
+    width: calc(100% - 270px);
+}
+.content {
+    margin-left: 270px;
+    margin-top: 0; /* Adjusted to be below the header */
+    padding: 20px;
+    box-sizing: border-box;
+    width: calc(100% - 270px);
+}
+.job-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.job-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+.job-description {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #666;
+}
+.job-link {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+.job-link:hover {
+    text-decoration: underline;
+}
+
+.form-label{
+    display: inline-block;
+    min-width: 150px;
+    vertical-align: top;
+
+}

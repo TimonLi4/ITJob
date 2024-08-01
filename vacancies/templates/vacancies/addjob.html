@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{% block addjob %}
+
+<h1>{{title}}</h1>
+<p></p>
+<div class="job-card">
+<form action="" method="post">
+    {%csrf_token%}
+    <!-- <table>
+        {{form.as_p}}
+    </table> -->
+    
+    <div class ='form-error'>{{form.non_field_errors}}</div>
+    {%for f in form%}
+    <label class="form-label" for="{{f.title.id_for_label}}">{{f.label}}:</label>{{f}}
+    <div class="form-error">{{f.errors}}</div>
+    {%endfor%}
+    <p><button type="submit">Опубликовать</button></p>
+</form>
+</div>
+
+{%endblock%}

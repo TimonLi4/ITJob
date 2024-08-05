@@ -7,5 +7,6 @@ urlpatterns = [
     path('contact/',contact,name='contact'),
     path('login/',login,name='login'),
     path('post/<slug:job_slug>/',show_job,name='job'),
+    path('category/<int:cat_slug>/',show_category,name='category')
         
 ]

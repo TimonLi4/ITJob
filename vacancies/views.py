@@ -23,7 +23,7 @@ def main_page(request):
     data={
         'jobs':jobs,
         'menu':menu,
-        'category':cats_db
+        'cat_selected':0,
     }
 
     return render(request,'vacancies/main.html',data)
@@ -63,3 +63,13 @@ def show_job(request,job_slug):
         'category':cats_db
     }
     return render(request,'vacancies/job.html',data)
+
+def show_category(request,cat_slug):
+    jobs = Job.objects.all().order_by('-time_create')
+    data={
+        'jobs':jobs,
+        'menu':menu,
+        'cat_selected':cat_slug,
+    }
+
+    return render(request,'vacancies/main.html',data)

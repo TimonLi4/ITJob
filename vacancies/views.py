@@ -10,13 +10,13 @@ menu=[
     {'title': 'Войти', 'url_name':'login'},
 ]
 
-cats_db=[
+"""cats_db=[
     {'id':1,'name':'Data Science'},
     {'id':2,'name':'Backend'},
     {'id':3,'name':'Frontend'},
     {'id':4,'name':'GameDev'},
 ]
-
+"""
 def main_page(request):
     jobs = Job.objects.all().order_by('-time_create')
 
@@ -60,16 +60,18 @@ def show_job(request,job_slug):
         'title':post.title,
         'menu':menu,
         "post":post,
-        'category':cats_db
+        #'category':cats_db
     }
     return render(request,'vacancies/job.html',data)
 
-def show_category(request,cat_slug):
-    jobs = Job.objects.all().order_by('-time_create')
+def show_specification(request,spc_slug):
+    specification_d = get_object_or_404(Specification,slug=spc_slug)
+    jobs = Job.objects.filter(specification_id=specification_d.pk)
     data={
+        'title': f'Спецификация: {specification_d.name}',
         'jobs':jobs,
         'menu':menu,
-        'cat_selected':cat_slug,
+        'cat_selected':specification_d.pk,
     }
 
     return render(request,'vacancies/main.html',data)

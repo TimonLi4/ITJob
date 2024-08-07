@@ -10,6 +10,7 @@ class Job(models.Model):
     time_create=models.DateTimeField(auto_now_add=True)
     time_update=models.DateTimeField(auto_now=True)
     specification = models.ForeignKey('Specification',on_delete= models.PROTECT)
+    tags = models.ForeignKey('Experience',null=True,on_delete= models.PROTECT,related_name='tags')
     
     #is_pudlished
 
@@ -29,4 +30,14 @@ class Specification(models.Model):
     
     def get_absolute_url(self):
         return reverse('specification',kwargs={'spc_slug':self.slug})
+
+class Experience(models.Model):
+    exp=models.CharField(max_length=100)
+    slug=models.SlugField(max_length=100)
+
+    def __str__(self) -> str:
+        return self.exp
+    
+    def get_absolute_url(self):
+        return reverse('test',kwargs={'exp_slug':self.slug})
 

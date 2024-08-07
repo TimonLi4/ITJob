@@ -25,12 +25,21 @@
     <h2>Навигация</h2>
     <ul>
         <!-- <li class="selected">Все вакансии</li> -->
-        {%if cat_selected == 0 or cat_selected is None%}
+        {%if cat_selected == 0 or cat_selected is None %}
         <li class="selected">Все вакансии</li>
         {%else%}
         <li><a href="{% url 'home' %}"</a>Все вакансии</li>
         {%endif%}
         {%show_categories cat_selected %}
+        <!--  -->
+
+        {%if exp_selected == 0 or exp_selected is None%}
+        <li class="selected">Опыт</li>
+        {%else%}
+        <li><a href="{% url 'home' %}"</a>Опыт</li>
+        {%endif%}
+        {%show_exp exp_selected %}
+        
     </ul>
 </div>
 <div class="main-content"> 

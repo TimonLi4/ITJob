@@ -75,3 +75,16 @@ def show_specification(request,spc_slug):
     }
 
     return render(request,'vacancies/main.html',data)
+
+
+def test(request,exp_slug):
+    experience= get_object_or_404(Experience,slug = exp_slug)
+    jobs =Job.objects.filter(tags_id=experience.id)
+
+    data={
+        'title': f'Опыт: {experience.exp}',
+        'jobs':jobs,
+        'menu':menu,
+        'cat_selected':experience.pk,
+    }
+    return render(request,'vacancies/main.html',data)

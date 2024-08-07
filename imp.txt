@@ -1,0 +1,8 @@
+ITJOB
+работа для 
+
+
+доработать метод combine в inclusion tags (base.html условие)
+42 строчка 
+<!-- {%combine cat_selected exp_selected %} --> 
+base.html

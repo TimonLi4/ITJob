@@ -2,9 +2,7 @@ from django import forms
 from .models import *
 
 
-class AddJob(forms.ModelForm):
-
-
+class AddJobForm(forms.ModelForm):
     class Meta:
         model = Job
         fields=['title','slug','description','specification','tags']

@@ -6,21 +6,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'vacancies/css/style.css'%}"/>
-    <title>Сайт вакансий</title>
+    <title>ITJob</title>
 </head>
 <body>
 
+{%block mainmenu %}
 <div class="header">
 <h1><a class="ITJob" href="{%url 'home' %}">ITJob</a></h1>
 <nav>
         <ul>
-            {%for m in menu%}
+            <!-- {%get_menu as menu%} -->
+            {%for m in mainmenu%}
             <li><a href="{% url m.url_name%}">{{m.title}}</a></li>
             {%endfor%}
+            {%if user.is_authenticated%}
+            <li class="last"> <a href="{% url 'users:profile' %}">{{user.username}}</a> | <a href="{% url 'users:logout' %}">Выйти</a></li>
+            {%else%}
+            <li class="last"><a href="{%url 'users:login'%}">Войти </a>| <a href="{% url 'users:register'%}">Регистрация</a></li>
+            {%endif%}
         </ul>
+        <div class="clear"></div>
 </nav>
 </div>
-
+{%endblock%}
 <div class="sidebar">
     <h2>Навигация</h2>
     <ul>
@@ -31,14 +39,9 @@
         <li><a href="{% url 'home' %}"</a>Все вакансии</li>
         {%endif%}
         {%show_categories cat_selected %}
-        <!--  -->
 
-        {%if exp_selected == 0 or exp_selected is None%}
-        <li class="selected">Опыт</li>
-        {%else%}
-        <li><a href="{% url 'home' %}"</a>Опыт</li>
-        {%endif%}
-        {%show_exp exp_selected %}
+        
+        
         
     </ul>
 </div>

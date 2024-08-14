@@ -1,7 +1,14 @@
-{%for c in cats %}
-{% if c.id == cat_selected%}
+<form action="test/" method="post">
+    {%csrf_token%}
+    {%for c in cats %}
+    <input type="checkbox" name="{{c.name}}" id="id_{{c.id}}"><label for= 'id_{{c.id}}'>{{c.name}}</label> <p></p>
+    {%endfor%}
+    <p>
+    <button type="submit">Найти</button></p>
+</form>
+
+<!-- {% if c.id == cat_selected%}
 <li class="selected"  >{{c.name}}</li>
 {%else%}
 <li><a href="{{ c.get_absolute_url }}">{{c.name}}</a></li>
-{%endif%}
-{%endfor%}
+{%endif%} -->

@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 
@@ -9,8 +10,9 @@ class Job(models.Model):
     description = models.TextField(blank=True,verbose_name='Описание')
     time_create=models.DateTimeField(auto_now_add=True)
     time_update=models.DateTimeField(auto_now=True)
-    specification = models.ForeignKey('Specification',on_delete= models.PROTECT)
-    tags = models.ForeignKey('Experience',null=True,on_delete= models.PROTECT,related_name='tags')
+    specification = models.ForeignKey('Specification',on_delete= models.PROTECT,verbose_name='Квалификация')
+    tags = models.ForeignKey('Experience',null=True,on_delete= models.PROTECT,related_name='tags',verbose_name='Опыт работы')
+    author = models.ForeignKey(get_user_model(),on_delete=models.SET_NULL,related_name='posts',null=True,default=None)
     
     #is_pudlished
 

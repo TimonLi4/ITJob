@@ -7,7 +7,7 @@ urlpatterns = [
     path('contact/',contact,name='contact'),
     path('login/',login,name='login'),
     path('post/<slug:job_slug>/',show_job,name='job'),
-    path('specification/<slug:spc_slug>/',show_specification,name='specification'),
-    path('experience/<slug:exp_slug>/',exp,name='exp'),
-    path('test/',combine,name='combine'),
+    #path('specification/<slug:spc_slug>/',show_specification,name='specification'),
+    #path('experience/<slug:exp_slug>/',exp,name='exp'),
+    path('sorting/',sorting,name='sorting'),
 ]

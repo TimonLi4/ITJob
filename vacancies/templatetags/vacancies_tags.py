@@ -10,9 +10,10 @@ register=template.Library()
 
 
 @register.inclusion_tag('vacancies/list_categories.html')
-def show_categories(cat_selected=0):
+def show_categories():
     cats = Specification.objects.all()
-    return {'cats':cats,'cat_selected':cat_selected}
+    exp = Experience.objects.all()
+    return {'cats':cats, 'exp': exp}
 
 @register.simple_tag()
 def get_menu():

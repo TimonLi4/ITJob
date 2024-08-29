@@ -1,10 +1,16 @@
-<form action="test/" method="post">
+<form action="{% url 'sorting' %}" method="post">
     {%csrf_token%}
     {%for c in cats %}
-    <input type="checkbox" name="{{c.name}}" id="id_{{c.id}}"><label for= 'id_{{c.id}}'>{{c.name}}</label> <p></p>
+    <input type="checkbox" name="checkbox_{{c.id}}"><label for= 'id_{{c.id}}'>{{c.name}}</label> <p></p>
+    {%endfor%}
+    <p></p>
+    <h2>Опыт работы:</h2>
+    <p></p>
+    {%for c in exp %}
+    <input type="checkbox" name="tags_{{c.id}}"><label for= 'id_{{c.id}}'>{{c.exp}}</label> <p></p>
     {%endfor%}
     <p>
-    <button type="submit">Найти</button></p>
+    <button type="submit" name="action">Найти</button></p>
 </form>
 
 <!-- {% if c.id == cat_selected%}

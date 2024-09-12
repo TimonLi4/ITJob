@@ -94,21 +94,11 @@ class AddJob(LoginRequiredMixin,FormView):
         return super().form_valid(form)"""
 
 
-def checkbox(request):
+def checkbox(request,name):
     if request.method == 'POST':
         checkbox_states = []
         for item in items:
-            checkbox_name = f'checkbox_{item["id"]}'
-            if checkbox_name in request.POST:
-                checkbox_states.append(item["id"])
-            
-        return checkbox_states
-
-def checkbox_tags_(request):
-    if request.method == 'POST':
-        checkbox_states = []
-        for item in items:
-            checkbox_name = f'tags_{item["id"]}'
+            checkbox_name = f'{name}{item["id"]}'
             if checkbox_name in request.POST:
                 checkbox_states.append(item["id"])
             
@@ -118,9 +108,12 @@ def checkbox_tags_(request):
 def sorting(request):
     #check = request.POST.getlist('checkid')
     
-    checkbox_states = checkbox(request)
-    checkbox_tags = checkbox_tags_(request)
-    jobs = Job.objects.filter(specification_id__in=checkbox_states)
+    checkbox_states = checkbox(request,'checkbox_')
+    checkbox_tags = checkbox(request,'tags_')
+    jobs = Job.objects.all()
+    
+    if len(checkbox_states) > 0:
+        jobs = jobs.filter(specification_id__in=checkbox_states)
 
     if len(checkbox_tags) > 0:
         jobs = jobs.filter(tags_id__in= checkbox_tags)
